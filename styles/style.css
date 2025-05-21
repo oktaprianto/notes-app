@@ -1,0 +1,119 @@
+/* Base Grid Layout */
+body {
+    display: grid;
+    grid-template-areas:
+        "app-bar"
+        "tabs"
+        "input"
+        "notes";
+    grid-template-rows: auto auto auto 1fr;
+    min-height: 100vh;
+    margin: 0;
+    background: #f5f5f5;
+    font-family: system-ui, sans-serif;
+}
+
+/* Grid Area Assignment */
+app-bar {
+    grid-area: app-bar;
+}
+
+.tab-container {
+    grid-area: tabs;
+}
+
+note-input {
+    grid-area: input;
+}
+
+.notes-container {
+    grid-area: notes;
+}
+
+/* Tab Navigation Grid */
+.tab-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background: white;
+}
+
+.tab-button {
+    display: grid;
+    place-items: center;
+    padding: 0.8rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background: #007bff;
+    color: white;
+}
+
+/* Notes Grid Container */
+.notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+}
+
+/* Note Item Grid */
+.note-item {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.note-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Input Form Grid */
+note-input form {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+/* Loading Overlay Grid */
+.loading-overlay {
+    display: grid;
+    place-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+}
+
+.loading-spinner {
+    display: grid;
+    place-self: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .notes-container {
+        grid-template-columns: 1fr;
+    }
+
+    .tab-container {
+        grid-template-columns: 1fr;
+    }
+
+    note-input form {
+        grid-template-columns: 1fr;
+    }
+}
